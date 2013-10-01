@@ -68,6 +68,13 @@
     </pluginRepositories>
 
     <build>
+        <extensions>
+            <extension>
+                <groupId>com.indeed</groupId>
+                <artifactId>ssh-agent-wagon-ssh</artifactId>
+                <version>2.5.indeed.0</version>
+            </extension>
+        </extensions>
         <pluginManagement>
             <plugins>
                 <plugin>
