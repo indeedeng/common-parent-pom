@@ -128,12 +128,12 @@
         <profile>
             <id>private-release</id>
             <distributionManagement>
-                <snapshotRepository>
+                <repository>
                     <id>indeed-oss</id>
                     <name>Indeed OSS Repository</name>
                     <url>sftp://ausoff-ivy1.ausoff.indeed.net:4024/releases</url>
                     <uniqueVersion>true</uniqueVersion>
-                </snapshotRepository>
+                </repository>
             </distributionManagement>
             <build>
                 <plugins>
