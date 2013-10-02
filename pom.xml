@@ -126,6 +126,12 @@
 
     <profiles>
         <profile>
+            <id>sonatype-oss-release</id>
+            <properties>
+                <releaseOnClose>true</releaseOnClose>
+            </properties>
+        </profile>
+        <profile>
             <id>private-snapshot</id>
             <distributionManagement>
                 <snapshotRepository>
