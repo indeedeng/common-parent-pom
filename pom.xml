@@ -24,21 +24,6 @@
         <developerConnection>scm:git:git@github.com:indeedeng/parent-pom.git</developerConnection>
     </scm>
 
-    <distributionManagement>
-        <repository>
-            <id>indeed-oss</id>
-            <name>Indeed OSS Repository</name>
-            <url>sftp://ausoff-ivy1.ausoff.indeed.net:4024/releases</url>
-            <uniqueVersion>false</uniqueVersion>
-        </repository>
-        <snapshotRepository>
-            <id>indeed-oss-snapshots</id>
-            <name>Indeed OSS Repository</name>
-            <url>sftp://ausoff-ivy1.ausoff.indeed.net:4024/snapshots</url>
-            <uniqueVersion>true</uniqueVersion>
-        </snapshotRepository>
-    </distributionManagement>
-
     <repositories>
         <repository>
             <id>indeed-oss-releases</id>
@@ -88,18 +73,26 @@
                 <plugin>
                     <artifactId>maven-source-plugin</artifactId>
                     <version>2.2.1</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>2.9.1</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>2.4.1</version>
-                    <configuration>
-                        <releaseProfiles>release</releaseProfiles>
-                        <goals>deploy</goals>
-                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>com.indeed</groupId>
@@ -128,30 +121,89 @@
     <profiles>
         <profile>
             <!-- ''mvn -Prelease install'' to generate javadoc and source jars -->
-            <id>release</id>
+            <id>public-release</id>
             <build>
                 <plugins>
                     <plugin>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>attach-sources</id>
-                                <goals>
-                                    <goal>jar-no-fork</goal>
-                                </goals>
-                            </execution>
-                        </executions>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.4.4</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh-staging</serverId>
+                            <nexusUrl>https://oss.sonatype.org/service/local/staging/deploy/maven2/</nexusUrl>
+                        </configuration>
                     </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>public-snapshot</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh-snapshots</id>
+                    <name>Sonatype OSSRH Repository</name>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+                    <uniqueVersion>true</uniqueVersion>
+                </snapshotRepository>
+            </distributionManagement>
+            <build>
+                <plugins>
                     <plugin>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>attach-javadocs</id>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.4.4</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh-snapshots</serverId>
+                            <nexusUrl>https://oss.sonatype.org/content/repositories/snapshots/</nexusUrl>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>private-release</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>indeed-oss</id>
+                    <name>Indeed OSS Repository</name>
+                    <url>sftp://ausoff-ivy1.ausoff.indeed.net:4024/releases</url>
+                    <uniqueVersion>true</uniqueVersion>
+                </snapshotRepository>
+            </distributionManagement>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>2.4.1</version>
+                        <configuration>
+                            <releaseProfiles>release</releaseProfiles>
+                            <goals>deploy</goals>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>private-snapshot</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>indeed-oss</id>
+                    <name>Indeed OSS Repository</name>
+                    <url>sftp://ausoff-ivy1.ausoff.indeed.net:4024/snapshots</url>
+                    <uniqueVersion>true</uniqueVersion>
+                </snapshotRepository>
+            </distributionManagement>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>2.4.1</version>
+                        <configuration>
+                            <releaseProfiles>release</releaseProfiles>
+                            <goals>deploy</goals>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
