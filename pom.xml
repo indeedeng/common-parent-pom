@@ -126,29 +126,6 @@
 
     <profiles>
         <profile>
-            <id>private-release</id>
-            <distributionManagement>
-                <repository>
-                    <id>indeed-oss</id>
-                    <name>Indeed OSS Repository</name>
-                    <url>sftp://ausoff-ivy1.ausoff.indeed.net:4024/releases</url>
-                    <uniqueVersion>true</uniqueVersion>
-                </repository>
-            </distributionManagement>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-release-plugin</artifactId>
-                        <version>2.4.1</version>
-                        <configuration>
-                            <releaseProfiles>release</releaseProfiles>
-                            <goals>deploy</goals>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
             <id>private-snapshot</id>
             <distributionManagement>
                 <snapshotRepository>
