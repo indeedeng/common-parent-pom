@@ -44,20 +44,6 @@
         </repository>
     </repositories>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>internal.repo</id>
-            <name>Indeed.com Snapshot Repository</name>
-            <url>sftp://ausoff-ivy1.ausoff.indeed.net:4024/</url>
-            <layout>default</layout>
-            <snapshots>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-
     <build>
         <extensions>
             <extension>
@@ -132,15 +118,8 @@
             </properties>
         </profile>
         <profile>
-            <id>private-snapshot</id>
-            <distributionManagement>
-                <snapshotRepository>
-                    <id>indeed-oss</id>
-                    <name>Indeed OSS Repository</name>
-                    <url>sftp://ausoff-ivy1.ausoff.indeed.net:4024/snapshots</url>
-                    <uniqueVersion>true</uniqueVersion>
-                </snapshotRepository>
-            </distributionManagement>
+            <!-- for use with altDeploymentRepository -->
+            <id>locally-staged-release</id>
             <build>
                 <plugins>
                     <plugin>
@@ -151,8 +130,25 @@
                             <goals>deploy</goals>
                         </configuration>
                     </plugin>
+                    <plugin>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.4</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
                 </plugins>
             </build>
+            <properties>
+                <arguments>-DaltDeploymentRepository=${altDeploymentRepository}</arguments>
+                <deployAtEnd>true</deployAtEnd>
+            </properties>
         </profile>
     </profiles>
 
