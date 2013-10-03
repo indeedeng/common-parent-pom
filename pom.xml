@@ -30,20 +30,6 @@
         <developerConnection>scm:git:git@github.com:indeedeng/parent-pom.git</developerConnection>
     </scm>
 
-    <repositories>
-        <repository>
-            <id>indeed-oss-releases</id>
-            <name>Indeed.com OSS Repository</name>
-            <url>https://yesindeed.ausoff.indeed.net/maven-oss/releases</url>
-            <layout>default</layout>
-            <snapshots>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <build>
         <extensions>
             <extension>
