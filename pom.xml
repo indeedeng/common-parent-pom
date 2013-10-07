@@ -9,7 +9,7 @@
 
     <groupId>com.indeed</groupId>
     <artifactId>oss-parent</artifactId>
-    <version>5</version>
+    <version>6-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Parent POM for open source projects from Indeed.com Engineering</name>
     <description>Shared Maven configuration for Indeed.com</description>
