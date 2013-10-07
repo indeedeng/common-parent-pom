@@ -98,6 +98,34 @@
 
     <profiles>
         <profile>
+            <id>indeed-office</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>indeed-oss-snapshots</id>
+                    <name>Indeed OSS Repository</name>
+                    <url>${indeed-oss-snapshots.upload.url}</url>
+                    <uniqueVersion>true</uniqueVersion>
+                    <layout>default</layout>
+                </snapshotRepository>
+            </distributionManagement>
+            <repositories>
+                <repository>
+                    <id>indeed-oss-snapshots</id>
+                    <name>Indeed OSS Repository</name>
+                    <url>${indeed-oss-snapshots.download.url}</url>
+                    <releases><enabled>false</enabled></releases>
+                    <snapshots><enabled>true</enabled></snapshots>
+                </repository>
+                <repository>
+                    <id>sonatype-nexus-staging</id>
+                    <name>Nexus Release Repository</name>
+                    <url>https://oss.sonatype.org/content/repositories/releases/</url>
+                    <releases><enabled>true</enabled></releases>
+                    <snapshots><enabled>false</enabled></snapshots>
+                </repository>
+            </repositories>
+        </profile>
+        <profile>
             <id>sonatype-oss-release</id>
             <properties>
                 <releaseOnClose>true</releaseOnClose>
