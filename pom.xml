@@ -8,10 +8,10 @@
     </parent>
 
     <groupId>com.indeed</groupId>
-    <artifactId>oss-parent</artifactId>
-    <version>6-SNAPSHOT</version>
+    <artifactId>common-parent</artifactId>
+    <version>1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Parent POM for open source projects from Indeed.com Engineering</name>
+    <name>Parent POM for projects from Indeed.com Engineering</name>
     <description>Shared Maven configuration for Indeed.com</description>
 
     <developers />
@@ -25,9 +25,9 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/indeedeng/parent-pom</url>
-        <connection>scm:git:https://github.com/indeedeng/parent-pom.git</connection>
-        <developerConnection>scm:git:git@github.com:indeedeng/parent-pom.git</developerConnection>
+        <url>https://github.com/indeedeng/common-parent-pom</url>
+        <connection>scm:git:https://github.com/indeedeng/common-parent-pom.git</connection>
+        <developerConnection>scm:git:git@github.com:indeedeng/common-parent-pom.git</developerConnection>
     </scm>
 
     <build>
@@ -98,34 +98,7 @@
 
     <profiles>
         <profile>
-            <id>indeed-office</id>
-            <distributionManagement>
-                <snapshotRepository>
-                    <id>indeed-oss-snapshots</id>
-                    <name>Indeed OSS Repository</name>
-                    <url>${indeed-oss-snapshots.upload.url}</url>
-                    <uniqueVersion>true</uniqueVersion>
-                    <layout>default</layout>
-                </snapshotRepository>
-            </distributionManagement>
-            <repositories>
-                <repository>
-                    <id>indeed-oss-snapshots</id>
-                    <name>Indeed OSS Repository</name>
-                    <url>${indeed-oss-snapshots.download.url}</url>
-                    <releases><enabled>false</enabled></releases>
-                    <snapshots><enabled>true</enabled></snapshots>
-                </repository>
-                <repository>
-                    <id>sonatype-nexus-staging</id>
-                    <name>Nexus Release Repository</name>
-                    <url>https://oss.sonatype.org/content/repositories/releases/</url>
-                    <releases><enabled>true</enabled></releases>
-                    <snapshots><enabled>false</enabled></snapshots>
-                </repository>
-            </repositories>
-        </profile>
-        <profile>
+            <!-- for use only with this pom itself, or children of oss-pom -->
             <id>sonatype-oss-release</id>
             <properties>
                 <releaseOnClose>true</releaseOnClose>
