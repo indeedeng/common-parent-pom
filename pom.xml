@@ -114,6 +114,7 @@
                             <serverId>sonatype-nexus-staging</serverId>
                             <nexusUrl>https://oss.sonatype.org/</nexusUrl>
                         </configuration>
+                        <inherited>false</inherited>
                     </plugin>
                 </plugins>
             </build>
