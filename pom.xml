@@ -9,7 +9,7 @@
 
     <groupId>com.indeed</groupId>
     <artifactId>common-parent</artifactId>
-    <version>5-SNAPSHOT</version>
+    <version>5</version>
     <packaging>pom</packaging>
     <name>Parent POM for projects from Indeed.com Engineering</name>
     <description>Shared Maven configuration for Indeed.com</description>
