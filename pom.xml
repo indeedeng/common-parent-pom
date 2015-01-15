@@ -312,7 +312,7 @@
         <jstl.version>1.2</jstl.version>
         <junit.version>4.8.2</junit.version>
         <log4j.version>1.2.17</log4j.version>
-        <spring.version>3.0.5.RELEASE</spring.version>
+        <spring.version>3.2.4.RELEASE</spring.version>
         <svnkit.version>1.8.5</svnkit.version>
         <tomcat-api7.version>7.0.8</tomcat-api7.version>
     </properties>
