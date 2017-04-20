@@ -9,7 +9,7 @@
 
     <groupId>com.indeed</groupId>
     <artifactId>common-parent</artifactId>
-    <version>14-SNAPSHOT</version>
+    <version>15-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Parent POM for projects from Indeed.com Engineering</name>
     <description>Shared Maven configuration for Indeed.com</description>
@@ -108,7 +108,7 @@
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.4.7</version>
+                        <version>1.6.8</version>
                         <extensions>true</extensions>
                         <configuration>
                             <serverId>sonatype-nexus-staging</serverId>
