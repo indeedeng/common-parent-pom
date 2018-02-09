@@ -99,7 +99,7 @@
             <id>release-plugins</id>
             <activation>
                 <property>
-                    <name>release</name>
+                    <name>indeed.release</name>
                 </property>
             </activation>
             <build>
