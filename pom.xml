@@ -96,10 +96,10 @@
 
     <profiles>
         <profile>
-            <id>release-plugins</id>
+            <id>signing-plugin</id>
             <activation>
                 <property>
-                    <name>indeed.release</name>
+                    <name>indeed.enableSigning</name>
                 </property>
             </activation>
             <build>
@@ -125,7 +125,7 @@
             <id>oss-plugins</id>
             <activation>
                 <property>
-                    <name>indeed.oss-release</name>
+                    <name>indeed.enableOssStaging</name>
                 </property>
             </activation>
             <build>
