@@ -8,7 +8,15 @@
     <packaging>pom</packaging>
     <name>Parent POM for projects from Indeed.com Engineering</name>
     <description>Shared Maven configuration for Indeed.com</description>
-    <developers />
+    <url>https://github.com/indeedeng</url>
+
+    <developers>
+        <developer>
+            <id>IndeedEng</id>
+            <name>Indeed Engineering</name>
+            <url>https://github.com/indeedeng</url>
+        </developer>
+    </developers>
 
     <licenses>
         <license>
